@@ -1,1 +1,8 @@
 https://www.security-sleuth.com/sleuth-blog/2017/1/3/sqlmap-cheat-sheet
+
+Command
+--url Provide URL for the attack
+--dbmsTell SQLMap the type of database that is running
+--dump Dump the data within the database that the application uses
+--dump-all Dump the ENTIRE database
+--batch SQLMap will run automatically and won't ask for user input
