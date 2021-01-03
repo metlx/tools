@@ -1,0 +1,1 @@
+GRUB_CMDLINE_LINUX_DEFAULT="intremap=off quiet splash button.lid_init_state=open"
