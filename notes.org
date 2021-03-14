@@ -1,5 +1,3 @@
-#+TITLE: Notes
-
 * nmap
 : nmap is the industry standard port scanner/enumeration tool
 : there are 65535 ports on a computer
