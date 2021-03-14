@@ -1,0 +1,109 @@
+#+TITLE: Notes
+
+* nmap
+: nmap is the industry standard port scanner/enumeration tool
+: there are 65535 ports on a computer
+: a (http) webservice can be found on port 80
+: a (https) webservice can be found on port 443
+#+begin_src bash
+(port) (service)
+
+1 	TCP Port Service Multiplexer (TCPMUX)
+5 	Remote Job Entry (RJE)
+7 	ECHO
+18 	Message Send Protocol (MSP)
+20 	FTP — Data
+21 	FTP — Control
+22 	SSH Remote Login Protocol
+23 	Telnet
+25 	Simple Mail Transfer Protocol (SMTP)
+29 	MSG ICP
+37 	Time
+42 	Host Name Server (Nameserv)
+43 	WhoIs
+49 	Login Host Protocol (Login)
+53 	Domain Name System (DNS)
+69 	Trivial File Transfer Protocol (TFTP)
+70 	Gopher Services
+79 	Finger
+80 	HTTP
+103 	X.400 Standard
+108 	SNA Gateway Access Server
+109 	POP2
+110 	POP3
+115 	Simple File Transfer Protocol (SFTP)
+118 	SQL Services
+119 	Newsgroup (NNTP)
+137 	NetBIOS Name Service
+139 	NetBIOS Datagram Service
+143 	Interim Mail Access Protocol (IMAP)
+150 	NetBIOS Session Service
+156 	SQL Server
+161 	SNMP
+179 	Border Gateway Protocol (BGP)
+190 	Gateway Access Control Protocol (GACP)
+194 	Internet Relay Chat (IRC)
+197 	Directory Location Service (DLS)
+389 	Lightweight Directory Access Protocol (LDAP)
+396 	Novell Netware over IP
+443 	HTTPS
+444 	Simple Network Paging Protocol (SNPP)
+445 	Microsoft-DS
+458 	Apple QuickTime
+546 	DHCP Client
+547 	DHCP Server
+563 	SNEWS
+569 	MSN
+1080 	Socks
+#+end_src
+** switches
+-Ss
+: syn scan
+-sU
+: udp scan
+-O
+: os detection
+-sV
+: service version detection
+-v
+: increase verbosity
+-vv
+: verbosity level 2
+-oA
+: output all formats (gnmap, xml, nmap)
+-oN
+: output normal format
+-oG
+: output in grepable format
+-A
+: shorthand switch that activates service detection, operating system detection, a traceroute and common script scanning
+-T5
+: set timing template level 5
+-p
+: set port
+-p 1000-1500
+: scan port 1000 to 1500
+-p-
+: scan all ports
+--script
+: activate a script
+--script=vuln
+: activate all scripts in the (vuln) category
+** scan types
+#+begin_src bash
+When port scanning with Nmap, there are three basic scan types. These are:
+
+    TCP Connect Scans (-sT)
+    SYN "Half-open" Scans (-sS)
+    UDP Scans (-sU)
+
+Additionally there are several less common port scan types, some of which we will also cover (albeit in less detail). These are:
+
+    TCP Null Scans (-sN)
+    TCP FIN Scans (-sF)
+    TCP Xmas Scans (-sX)
+
+Most of these (with the exception of UDP scans) are used for very similar purposes, however, the way that they work differs between each scan. This means that, whilst one of the first three scans are likely to be your go-to in most situations, it's worth bearing in mind that other scan types exist.
+
+In terms of network scanning, we will also look briefly at ICMP (or "ping") scanning.
+#+end_src
