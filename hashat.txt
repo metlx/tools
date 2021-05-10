@@ -1,1 +1,0 @@
-hashcat --force -m 6900 -a 0 hash ~/Desktop/thm/boxz/easy/wordlist.txt
