@@ -13,6 +13,7 @@ mkdir ~/.vim/bundle
 mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
 mv ~/metlx-vim/.vimrc ~/
 mv ~/dots/.tmux.conf ~/
+echo -e "\e[32mdone!\e[0m"
 echo -e "\e[31mCleaning up...\e[0m"
 sleep 3
 rm -rf ~/dots
