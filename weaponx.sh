@@ -18,4 +18,5 @@ echo -e "\e[31mCleaning up...\e[0m"
 sleep 3
 rm -rf ~/dots
 rm -rf ~/metlx-vim
+rm -rf ~/weaponx.sh
 echo -e "\e[32mdone!\e[0m"
