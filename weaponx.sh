@@ -6,7 +6,7 @@ sleep 3
 git clone https://github.com/VundleVim/Vundle.vim.git
 git clone https://github.com/metlx/metlx-vim.git
 git clone https://github.com/metlx/dots
-echo -e "\e[90mSetting thins up...\e[0m"
+echo -e "\e[90mSetting things up...\e[0m"
 sleep 3
 mv ~/metlx-vim/.vim ~/
 mkdir ~/.vim/bundle
